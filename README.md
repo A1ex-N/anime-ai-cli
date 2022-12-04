@@ -5,7 +5,7 @@
 
 # If you want to use it just
 ```
-git clone github.com/A1ex-N/anime-ai-cli
+git clone https://github.com/A1ex-N/anime-ai-cli
 cd anime-ai-cli
 python anime.py <input> <OPTIONAL: output>
 ```
