@@ -1,6 +1,7 @@
 import requests
 import base64
 
+
 def image_to_base64(filename: str) -> str:
     with open(filename, 'rb') as f:
         return base64.b64encode(f.read()).decode('utf-8')
