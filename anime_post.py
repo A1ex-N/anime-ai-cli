@@ -12,11 +12,9 @@ class AnimePost:
     busiId: str = "ai_painting_anime_img_entry"
     extra: str = "{\"face_rects\":[],\"version\":2,\"platform\":\"web\",\"data_report\":{\"parent_trace_id\":\"4c689320-71ba-1909-ab57-13c0804d4cc6\",\"root_channel\":\"\",\"level\":0}}"
 
-
     def __post_init__(self):
         if len(self.images) > 1:
             print("AnimePost.images can only have 1 image. Using the first image in the list")
-
 
     @staticmethod
     def get_anime_image(filename: str) -> AnimeResponse:
@@ -26,7 +24,4 @@ class AnimePost:
         res = requests.post(post_url, json=post_data.__dict__)
         json_data = res.json()
         anime = AnimeResponse(**json_data) 
-        if anime.code == 2114:
-            print("Image rejected. Nudity isn't allowed.")
-            exit(1)
         return anime
