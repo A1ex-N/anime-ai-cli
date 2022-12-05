@@ -1,6 +1,11 @@
 from dataclasses import dataclass, field 
 import json
 
+
+ERROR_CODE_NUDITY = 2114
+ERROR_CODE_NO_FACE = 1001
+
+
 @dataclass
 class AnimeResponse:
     code: int
@@ -11,6 +16,11 @@ class AnimeResponse:
     videos: list = ""
 
     def __post_init__(self):
-        if self.code != 2114:
-            self.extra = json.loads(self.extra)["img_urls"]
-            #self.image_urls = json.loads(self.extra)["img_urls"]
+        if self.code == ERROR_CODE_NUDITY:
+            print("Image rejected. Nudity isn't allowed.")
+            exit(1)
+        if self.code == ERROR_CODE_NO_FACE:
+            print("No face in image. Can't process")
+            exit(1)
+
+        self.extra = json.loads(self.extra)["img_urls"]
