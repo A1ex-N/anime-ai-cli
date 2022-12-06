@@ -4,6 +4,7 @@ import json
 
 ERROR_CODE_NUDITY = 2114
 ERROR_CODE_NO_FACE = 1001
+ERROR_CODE_AUTH_FAILED = -2111
 
 
 @dataclass
@@ -16,6 +17,9 @@ class AnimeResponse:
     videos: list = ""
 
     def __post_init__(self):
+        if self.code == ERROR_CODE_AUTH_FAILED:
+            print("Auth failed. Don't know how to solve this one")
+            exit(1)
         if self.code == ERROR_CODE_NUDITY:
             print("Image rejected. Nudity isn't allowed.")
             exit(1)
