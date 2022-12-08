@@ -10,4 +10,6 @@ cd anime-ai-cli
 python anime.py <input> <OPTIONAL: output>
 ```
 
+Since initially releasing this tool the site has changed and now requires a Chinese IP address. So if you want to use it you have to use a Chinese VPN/proxy
+
 That's about it.
