@@ -32,7 +32,6 @@ class AnimePost:
         'Origin': 'https://h5.tu.qq.com'
         }
         res = requests.post(post_url, headers=headers, json=post_data.__dict__)
-        print(res.content)
         json_data = res.json()
         anime = AnimeResponse(**json_data) 
         return anime
