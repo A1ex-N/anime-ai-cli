@@ -2,7 +2,8 @@ from anime_response import AnimeResponse
 from dataclasses import dataclass
 from util import image_to_base64
 import requests
-
+import json
+import hashlib
 
 # Even though images is a list, you can't actually provide more than one image.
 # you get the msg "list index out of range"
@@ -21,7 +22,16 @@ class AnimePost:
         post_url = "https://ai.tu.qq.com/trpc.shadow_cv.ai_processor_cgi.AIProcessorCgi/Process"
         base64_image = image_to_base64(filename)
         post_data = AnimePost(images=[base64_image])
-        res = requests.post(post_url, json=post_data.__dict__)
+        post_str = json.dumps(post_data.__dict__)
+        url = f'https://h5.tu.qq.com{str(len(post_str))}HQ31X02e'.encode()
+        sign_value = hashlib.md5(url).hexdigest()
+        headers = {
+        'Host': 'ai.tu.qq.com',
+        "x-sign-value": sign_value, 
+        "x-sign-version": "v1",
+        'Origin': 'https://h5.tu.qq.com'
+        }
+        res = requests.post(post_url, headers=headers, json=post_data.__dict__)
         json_data = res.json()
         anime = AnimeResponse(**json_data) 
         return anime
