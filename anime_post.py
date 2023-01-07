@@ -10,7 +10,7 @@ import hashlib
 @dataclass
 class AnimePost:
     images: list[str]
-    busiId: str = "ai_painting_anime_img_entry"
+    busiId: str = "different_dimension_me_img_entry"
     extra: str = "{\"face_rects\":[],\"version\":2,\"platform\":\"web\",\"data_report\":{\"parent_trace_id\":\"4c689320-71ba-1909-ab57-13c0804d4cc6\",\"root_channel\":\"\",\"level\":0}}"
 
     def __post_init__(self):
@@ -19,7 +19,7 @@ class AnimePost:
 
     @staticmethod
     def get_anime_image(filename: str) -> AnimeResponse:
-        post_url = "https://ai.tu.qq.com/trpc.shadow_cv.ai_processor_cgi.AIProcessorCgi/Process"
+        post_url = "https://ai.tu.qq.com/overseas/trpc.shadow_cv.ai_processor_cgi.AIProcessorCgi/Process"
         base64_image = image_to_base64(filename)
         post_data = AnimePost(images=[base64_image])
         post_str = json.dumps(post_data.__dict__)
