@@ -1,7 +1,5 @@
 # anime-ai-cli
 
-## Since initially releasing this tool the site has changed and now requires a Chinese IP address. So if you want to use it you have to use a Chinese VPN/proxy
-
 ## This is a simple python CLI that turn images into anime by using the site https://h5.tu.qq.com/web/ai-2d/cartoon/index. The reason i created this is because the site is really poorly made.
 
 
